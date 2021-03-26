@@ -37,7 +37,18 @@
 		$("body").removeClass("about-on");
 	});
 
-	
+	const countEl = document.getElementById('count');
+
+updateVisitCount();
+
+function updateVisitCount() {
+  fetch('https://api.countapi.xyz/update/perryfeinstein.com/8886648850?amount=1')
+  .then(res => res.json())
+  .then(res => {
+    countEl.innerHTML = res.value;
+  });
+}
+
 	//Contact page
 	
 	$(".contact-text").on('click', function () {
@@ -80,14 +91,3 @@
 	
 })(jQuery); 
 
-const countEl = document.getElementById('count');
-
-updateVisitCount();
-
-function updateVisitCount() {
-  fetch('https://api.countapi.xyz/update/perryfeinstein.com/8886648850?amount=1')
-  .then(res => res.json())
-  .then(res => {
-    countEl.innerHTML = res.value;
-  });
-}
